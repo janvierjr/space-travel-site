@@ -9,8 +9,8 @@
   --clr-white: 0 0% 100%;
 
   /* font-sizes */
-  --fs-900: 9.375rem;
-  --fs-800: 6.25rem;
+  --fs-900: 6.25rem;
+  --fs-800: 5rem;
   --fs-700: 3.5rem;
   --fs-600: 2rem;
   --fs-500: 1.75rem;
@@ -157,37 +157,6 @@ select {
   padding-inline: 2em;
 }
 
-.grid-container {
-  text-align: center;
-  display: grid;
-  padding-inline: 1em;
-  place-items: center;
-  row-gap: 20%;;
-}
-
-.grid-container * {
-  max-width: 50ch;
-}
-
-@media (min-width: 54rem) {
-  .grid-container {
-    text-align: left;
-    column-gap: (var(--container-gap, 2rem));
-    grid-template-columns: minmax(1em, 1fr) minmax(0, 40rem) minmax(0, 40rem) minmax(1em, 1fr);
-  }
-  .grid-container>*:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container>*:last-child {
-    grid-column: 3;
-  }
-  .grid-container--home {
-    padding-bottom: max(6rem, 20vh);
-    align-items: end;
-  }
-}
-
 
 /* screen reader only */
 .sr-only {
@@ -224,6 +193,7 @@ select {
 .bg-dark { background-color: hsl( var(--clr-dark) ); }
 .bg-accent { background-color: hsl( var(--clr-light) );}
 .bg-white { background-color: hsl( var(--clr-white) );}
+.bg-alpha-50 { background-color: hsl( var(--clr-white) / .50 );}
 
 .txt-dark { color: hsl( var(--clr-dark) );}
 .txt-accent { color: hsl( var(--clr-light) );}
@@ -274,8 +244,15 @@ select {
 }
 
 /* ------------------------ */
-/* Components */
+/* COMPONENTS */
 /* ------------------------ */
+.button-tabs {
+  --gap: 2.5rem;
+}
+
+.button-tab {
+  background-color: transparent;
+}
 
 .large-button {
   display: flex;
@@ -309,7 +286,6 @@ select {
   transform: scale(1.5);
 }
 
-
 .underline-indicators > *,
 .underline-indicator {
   cursor: pointer;
@@ -332,9 +308,6 @@ select {
   border-color: hsl( var(--clr-white) / 1);
 }
 
-.button-tabs {
-  --gap: 2.5rem;
-}
 
 .dot-indicators > *,
 .dot-select {
@@ -467,6 +440,14 @@ nav {
   .mobile-nav-toggle[aria-expanded="true"] {
     background-image: url(./assets/shared/icon-close.svg);
   }
+
+  .button-tabs {
+    justify-content: center;
+  }
+
+  .destination-meta {
+    justify-content: center;
+  }
 }
 
 .logo {
@@ -476,9 +457,64 @@ nav {
 }
 
 /* ------------------------ */
-/* PAGE SPECIFIC BACKGROUNDS */
+/* LAYOUT */
 /* ------------------------ */
 
+
+.grid-container {
+  text-align: center;
+  display: grid;
+  padding-inline: 1em;
+  place-items: center;
+  row-gap: 8%;
+}
+
+.grid-container * {
+  max-width: 50ch;
+}
+
+.grid-right {
+  margin-top: 0;
+  padding-bottom: 10vh;
+}
+
+/* destination layout */
+
+@media (min-width: 54rem) {
+  .grid-container {
+    text-align: left;
+    column-gap: (var(--container-gap, 2rem));
+    grid-template-columns: minmax(1em, 1fr) minmax(0, 40rem) minmax(0, 40rem) minmax(1em, 1fr);
+  }
+
+  .grid-container>*:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container>*:last-child {
+    grid-column: 3;
+  }
+
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+
+  .grid-container--destination {
+    padding-top: 6rem;
+    padding-bottom:0;
+    align-items: start;
+  }
+
+  .grid-right {
+    padding-top: 10rem;
+    padding-bottom: auto;
+  }
+}
+
+/* ------------------------ */
+/* PAGE SPECIFIC BACKGROUNDS */
+/* ------------------------ */
 /* ------------------------ */
 /* Home */
 /* ------------------------ */
@@ -492,9 +528,17 @@ body {
   background-image: url('./assets/home/background-home-mobile.jpg');
 }
 
+.body-destination {
+  background-image: url('./assets/destination/background-destination-mobile.jpg')
+}
+
 @media (min-width: 35rem) {
   .body-home {
       background-image: url('./assets/home/background-home-tablet.jpg');
+    }
+
+  .body-destination {
+      background-image: url('./assets/destination/background-destination-tablet.jpg');
     }
   }
 
@@ -502,4 +546,12 @@ body {
   .body-home {
     background-image: url('./assets/home/background-home-desktop.jpg');
   }
+  .body-destination {
+    background-image: url('./assets/destination/background-destination-desktop.jpg');
+  }
+}
+
+.planet-img {
+  margin: 5rem auto 0rem auto;
+  max-width: 60vw;
 }
