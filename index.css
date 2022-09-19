@@ -376,7 +376,7 @@ select {
 nav {
   display: flex;
   margin: 1rem 0 0 auto;
-  padding: 0 10rem 0 1rem;
+  padding: 0 10rem 0 4rem;
   background: hsl(var(--clr-dark) / 1);
 }
 
@@ -506,10 +506,22 @@ nav {
     align-items: start;
   }
 
+  .grid-container--crew {
+    padding-top: 6rem;
+    padding-bottom: 0;
+    align-items: start;
+  }
+
   .grid-right {
     padding-top: 10rem;
     padding-bottom: auto;
   }
+}
+
+/* crew layout */
+
+.crew-title {
+  display: inline;
 }
 
 /* ------------------------ */
@@ -532,6 +544,10 @@ body {
   background-image: url('./assets/destination/background-destination-mobile.jpg')
 }
 
+.body-crew {
+  background-image: url('./assets/crew/background-crew-desktop.jpg')
+}
+
 @media (min-width: 35rem) {
   .body-home {
       background-image: url('./assets/home/background-home-tablet.jpg');
@@ -540,7 +556,12 @@ body {
   .body-destination {
       background-image: url('./assets/destination/background-destination-tablet.jpg');
     }
+
+  .body-crew {
+      background-image: url('./assets/crew/background-crew-tablet.jpg')
+    }
   }
+
 
 @media (min-width: 55rem) {
   .body-home {
@@ -549,9 +570,19 @@ body {
   .body-destination {
     background-image: url('./assets/destination/background-destination-desktop.jpg');
   }
+  .body-crew {
+    background-image: url('./assets/crew/background-crew-desktop.jpg')
+  }
 }
 
 .planet-img {
   margin: 5rem auto 0rem auto;
   max-width: 60vw;
+}
+
+.crew-img {
+  max-width: min(70vw, 100%);
+  position: fixed;
+  bottom: 0;
+  right: 10%;
 }
